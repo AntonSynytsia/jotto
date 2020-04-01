@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Table } from 'react-bootstrap';
+
 const GuessedWords = ({ guessedWords }) => {
   let contents = undefined;
   if (guessedWords.length === 0) {
@@ -12,14 +14,14 @@ const GuessedWords = ({ guessedWords }) => {
       return (
         <tr data-test="guessed-word" key={index}>
           <td>{word.guessedWord}</td>
-          <td>word.letterMatchCount</td>
+          <td>{word.letterMatchCount}</td>
         </tr>
       );
     });
     contents = (
       <div data-test="guessed-words">
         <h3>Guessed Words</h3>
-        <table>
+        <Table striped bordered hover>
           <thead>
             <tr>
               <th>Guess</th>
@@ -27,7 +29,7 @@ const GuessedWords = ({ guessedWords }) => {
             </tr>
           </thead>
           <tbody>{guessedWordsRows}</tbody>
-        </table>
+        </Table>
       </div>
     );
   }

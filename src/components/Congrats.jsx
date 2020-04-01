@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+import { Alert } from 'react-bootstrap';
+
 /**
  * Functional React component for congratulatory message.
  * @function
@@ -10,9 +12,9 @@ const Congrats = ({ success }) => {
   return (
     <div data-test="component-congrats">
       {success && (
-        <span data-test="congrats-message">
+        <Alert data-test="congrats-message" variant="success">
           Congratulations! You guessed the word!
-        </span>
+        </Alert>
       )}
     </div>
   );
