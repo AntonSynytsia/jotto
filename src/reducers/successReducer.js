@@ -4,9 +4,9 @@ const initialState = false;
 
 /**
  * @function successReducer
- * @param {boolean} state - Current success state.
- * @param {object} action - action to be reduced.
- * @returns {boolean} - new success state.
+ * @param {boolean} state - current success state
+ * @param {object} action - action to be reduced
+ * @returns {boolean} new success state
  */
 const successReducer = (state = initialState, action) => {
   switch (action.type) {

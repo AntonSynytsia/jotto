@@ -5,8 +5,8 @@ import { Alert } from 'react-bootstrap';
 
 /**
  * Functional React component for congratulatory message.
- * @function
- * @param {JSX.Element} - Rendered component (or null if `success` prop)
+ * @function Congrats
+ * @returns {JSX.Element} Rendered component
  */
 const Congrats = ({ success }) => {
   return (

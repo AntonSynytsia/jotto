@@ -89,7 +89,7 @@ describe('guessWord action dispatcher', () => {
       // create the expected state
       const expectedState = {
         secretWord,
-        success: false,
+        success: true,
         guessedWords: [
           ...guessedWords,
           {
