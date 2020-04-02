@@ -1,6 +1,7 @@
 import { CORRECT_GUESS } from '../actions';
 
 const initialState = false;
+
 /**
  * @function successReducer
  * @param {array} state - Array of guessed words.
