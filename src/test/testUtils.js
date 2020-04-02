@@ -1,7 +1,7 @@
 import checkPropTypes from 'check-prop-types';
 import { createStore } from 'redux';
 
-import rootReducer from '../reducers';
+import rootReducer from '../reducers/index';
 
 /**
  * Create a testing store with imported reducers, middleware, and initial state.

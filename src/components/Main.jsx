@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Congrats from './Congrats';
 import GuessedWords from './GuessedWords';
+import Input from './Input';
 
 import { Container } from 'react-bootstrap';
 
@@ -11,6 +12,7 @@ const Main = () => {
     <Container>
       <h1>Jotto</h1>
       <Congrats success={true} />
+      <Input />
       <GuessedWords
         guessedWords={[
           {

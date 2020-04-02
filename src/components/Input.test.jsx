@@ -10,7 +10,7 @@ import Input from './Input';
  * @returns {ShallowWrapper}
  */
 const setup = (initialState = {}) => {
-  const store = storeFactory(initialState);
+  const store = storeFactory({ successReducer: initialState });
   const wrapper = shallow(<Input store={store} />)
     .dive()
     .dive();
@@ -20,14 +20,43 @@ const setup = (initialState = {}) => {
 
 describe('render', () => {
   describe('word has not been guessed', () => {
-    test('renders without error ', () => {});
-    test('renders input box', () => {});
-    test('renders submit button', () => {});
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { success: false };
+      wrapper = setup(initialState);
+    });
+    test('renders without error ', () => {
+      const component = findByTestAttr(wrapper, 'component-input');
+      expect(component.length).toBe(1);
+    });
+    test('renders input box', () => {
+      const component = findByTestAttr(wrapper, 'input-box');
+      expect(component.length).toBe(1);
+    });
+    test('renders submit button', () => {
+      const component = findByTestAttr(wrapper, 'submit-button');
+      expect(component.length).toBe(1);
+    });
   });
+
   describe('word has been guessed', () => {
-    test('renders without error ', () => {});
-    test('does not render input box', () => {});
-    test('does not render submit button', () => {});
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { success: true };
+      wrapper = setup(initialState);
+    });
+    test('renders without error ', () => {
+      const component = findByTestAttr(wrapper, 'component-input');
+      expect(component.length).toBe(1);
+    });
+    test('does not render input box', () => {
+      const component = findByTestAttr(wrapper, 'input-box');
+      expect(component.length).toBe(0);
+    });
+    test('does not render submit button', () => {
+      const component = findByTestAttr(wrapper, 'submit-button');
+      expect(component.length).toBe(0);
+    });
   });
 });
 

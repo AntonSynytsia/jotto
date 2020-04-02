@@ -1,4 +1,4 @@
-import { actionTypes, CORRECT_GUESS } from '../actions';
+import { CORRECT_GUESS } from '../actions';
 import successReducer from './successReducer';
 
 test('returns default initial state of `false` when no action is passed', () => {
