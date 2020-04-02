@@ -4,7 +4,7 @@ const initialState = false;
 
 /**
  * @function successReducer
- * @param {array} state - Array of guessed words.
+ * @param {boolean} state - Current success state.
  * @param {object} action - action to be reduced.
  * @returns {boolean} - new success state.
  */

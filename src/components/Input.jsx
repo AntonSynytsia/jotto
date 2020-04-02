@@ -31,7 +31,7 @@ Input.propTypes = {
   success: PropTypes.bool.isRequired
 };
 
-const mapStateToProps = ({ successReducer: { success } }) => {
+const mapStateToProps = ({ success }) => {
   return {
     success
   };

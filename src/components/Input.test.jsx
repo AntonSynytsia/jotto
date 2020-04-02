@@ -11,7 +11,7 @@ import createStoreWithMiddleware from '../store';
  * @returns {ShallowWrapper}
  */
 const setup = (initialState = {}) => {
-  const store = createStoreWithMiddleware({ successReducer: initialState });
+  const store = createStoreWithMiddleware(initialState);
   const wrapper = shallow(<Input store={store} />)
     .dive()
     .dive();
