@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './store';
+import createStoreWithMiddleware from './store';
 
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,7 +11,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={createStoreWithMiddleware()}>
       <App />
     </Provider>
   </React.StrictMode>,
