@@ -1,11 +1,12 @@
 export const CORRECT_GUESS = 'CORRECT_GUESS';
+export const GUESS_WORD = 'GUESS_WORD';
 
 /**
- * @function correctGuess
- * @returns {object} - Action object with type `CORRECT_GUESS`
+ * Returns Redux Thunk function that dispatches GUESS_WORD action and returns (conditionally) CORRECT_GUESS action.
+ * @function guessWord
+ * @param {string} guestWord - Guessed word.
+ * @return {function} - Redux Thunk function.
  */
-export function correctGuess() {
-  return {
-    type: CORRECT_GUESS
-  };
-}
+export const guessWord = guestWord => {
+  return function(dispatch, getState) {};
+};
