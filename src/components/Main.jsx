@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Congrats from './Congrats';
 import GuessedWords from './GuessedWords';
@@ -7,24 +8,35 @@ import Input from './Input';
 
 import { Container } from 'react-bootstrap';
 
-const Main = () => {
+import { getSecretWord } from '../actions/';
+
+const Main = ({ getSecretWord, secretWord, guessedWords, success }) => {
   return (
     <Container>
       <h1>Jotto</h1>
-      <Congrats success={true} />
+      <Congrats success={success} />
       <Input />
-      <GuessedWords
-        guessedWords={[
-          {
-            guessedWord: 'train',
-            letterMatchCount: 3
-          }
-        ]}
-      />
+      <GuessedWords guessedWords={guessedWords} />
     </Container>
   );
 };
 
-Main.propTypes = {};
+Main.propTypes = {
+  success: PropTypes.bool.isRequired,
+  secretWord: PropTypes.string.isRequired,
+  guessedWords: PropTypes.arrayOf(
+    PropTypes.shape({
+      guessedWord: PropTypes.string.isRequired,
+      letterMatchCount: PropTypes.number.isRequired
+    })
+  ).isRequired,
+  getSecretWord: PropTypes.func.isRequired
+};
 
-export default Main;
+const mapStateToProps = ({ success, secretWord, guessedWords }) => ({
+  success,
+  secretWord,
+  guessedWords
+});
+
+export default connect(mapStateToProps, { getSecretWord })(Main);
