@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import { Form, Button } from 'react-bootstrap';
 
+import { guessWord } from '../actions/';
+
 class Input extends Component {
   render() {
     const contents = this.props.success ? null : (
@@ -28,7 +30,8 @@ class Input extends Component {
 }
 
 Input.propTypes = {
-  success: PropTypes.bool.isRequired
+  success: PropTypes.bool.isRequired,
+  guessWord: PropTypes.func.isRequired
 };
 
 const mapStateToProps = ({ success }) => {
@@ -37,4 +40,4 @@ const mapStateToProps = ({ success }) => {
   };
 };
 
-export default connect(mapStateToProps)(Input);
+export default connect(mapStateToProps, { guessWord })(Input);
