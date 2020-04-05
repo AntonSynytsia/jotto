@@ -13,6 +13,7 @@ const GuessedWords = ({ guessedWords }) => {
     const guessedWordsRows = guessedWords.map((word, index) => {
       return (
         <tr data-test="guessed-word" key={index}>
+          <td>{index + 1}</td>
           <td>{word.guessedWord}</td>
           <td>{word.letterMatchCount}</td>
         </tr>
@@ -24,6 +25,7 @@ const GuessedWords = ({ guessedWords }) => {
         <Table striped bordered hover>
           <thead>
             <tr>
+              <th>#</th>
               <th>Guess</th>
               <th>Matching Letters</th>
             </tr>
@@ -40,9 +42,9 @@ GuessedWords.propTypes = {
   guessedWords: PropTypes.arrayOf(
     PropTypes.shape({
       guessedWord: PropTypes.string.isRequired,
-      letterMatchCount: PropTypes.number.isRequired
+      letterMatchCount: PropTypes.number.isRequired,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default GuessedWords;

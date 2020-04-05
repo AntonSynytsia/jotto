@@ -6,7 +6,7 @@ import createStoreWithMiddleware from '../store';
 import Input, { UnconnectedInput } from './Input';
 
 /**
- * Factory function to create a ShallowWrapper for the GuessWords component.
+ * Factory function to create a ShallowWrapper for the Input component.
  * @param {*} initialState - Initial state for this setup
  * @returns {ShallowWrapper}
  */
@@ -87,7 +87,7 @@ describe('`guessWord` action creator call', () => {
 
     const props = {
       guessWord: guessWordMock,
-      success: false
+      success: false,
     };
 
     // create a shallow wrapper for the UnconnectedInput component with guessWordMock as the guessWord prop

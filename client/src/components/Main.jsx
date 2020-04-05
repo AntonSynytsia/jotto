@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Congrats from './Congrats';
 import GuessedWords from './GuessedWords';
 import Input from './Input';
+import TotalGuesses from './TotalGuesses';
 
 import { Container } from 'react-bootstrap';
 
@@ -21,10 +22,11 @@ export class UnconnectedMain extends React.Component {
     return (
       <Container>
         <h1>Jotto</h1>
-        <div>The secret word is {secretWord}</div>
+        <div className="mb-3">The secret word is {secretWord}</div>
         <Congrats success={success} />
         <Input />
         <GuessedWords guessedWords={guessedWords} />
+        <TotalGuesses />
       </Container>
     );
   }
@@ -36,16 +38,16 @@ UnconnectedMain.propTypes = {
   guessedWords: PropTypes.arrayOf(
     PropTypes.shape({
       guessedWord: PropTypes.string.isRequired,
-      letterMatchCount: PropTypes.number.isRequired
+      letterMatchCount: PropTypes.number.isRequired,
     })
   ).isRequired,
-  getSecretWord: PropTypes.func.isRequired
+  getSecretWord: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ success, secretWord, guessedWords }) => ({
   success,
   secretWord,
-  guessedWords
+  guessedWords,
 });
 
 export default connect(mapStateToProps, { getSecretWord })(UnconnectedMain);

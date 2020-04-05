@@ -1,6 +1,6 @@
 # Jotto
 
-A five-letter word guessing game built following a test-driven development technique, with Express, React, Redux, Enzyme, and Jest, based on the Udemy course.
+A five-letter word guessing game built following a test-driven development technique, with Express, React, Redux, Enzyme, and Jest, based on the _React Testing with Jest and Enzyme_ Udemy course.
 
 # Setup
 
