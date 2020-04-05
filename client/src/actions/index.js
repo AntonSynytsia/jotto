@@ -12,31 +12,31 @@ export const SET_SECRET_WORD = 'SET_SECRET_WORD';
  * @param {string} guessedWord Guessed word
  * @return {function} Redux Thunk function
  */
-export const guessWord = guessedWord => {
-  return function(dispatch, getState) {
+export const guessWord = (guessedWord) => {
+  return function (dispatch, getState) {
     const secretWord = getState().secretWord;
     const letterMatchCount = getLetterMatchCount(guessedWord, secretWord);
 
     dispatch({
       type: GUESS_WORD,
-      payload: { guessedWord, letterMatchCount }
+      payload: { guessedWord, letterMatchCount },
     });
 
     if (guessedWord === secretWord) {
       dispatch({
-        type: CORRECT_GUESS
+        type: CORRECT_GUESS,
       });
     }
   };
 };
 
 export const getSecretWord = () => {
-  return function(dispatch, getState) {
-    return axios.get('http://localhost:3030/').then(response => {
+  return function (dispatch, getState) {
+    return axios.get('/api/five-letter-word').then((response) => {
       console.log(response.data);
       dispatch({
         type: SET_SECRET_WORD,
-        payload: response.data
+        payload: response.data,
       });
     });
   };
