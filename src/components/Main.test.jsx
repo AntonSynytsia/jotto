@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { findByTestAttr } from '../test/testUtils';
 import createStoreWithMiddleware from '../store';
 
-import Main from './Main';
+import Main, { UnconnectedMain } from './Main';
 
 /**
  * Factory function to create a ShallowWrapper for the Main component.
@@ -44,4 +44,25 @@ describe('redux properties', () => {
     const getSecretWordProp = wrapper.props().getSecretWord;
     expect(getSecretWordProp).toBeInstanceOf(Function);
   });
+});
+
+test('`getSecretWord` runs on Main mount', () => {
+  const getSecretWordMock = jest.fn();
+
+  // set up app component with getSecretWordMock as the getSecretWord prop
+  const wrapper = shallow(
+    <UnconnectedMain
+      getSecretWord={getSecretWordMock}
+      success={false}
+      guessedWords={[]}
+    />
+  );
+
+  // run the lifecycle method
+  wrapper.instance().componentDidMount();
+
+  // check to see if mock ran
+  const getSecretWordCallCount = getSecretWordMock.mock.calls.length;
+
+  expect(getSecretWordCallCount).toBe(1);
 });
