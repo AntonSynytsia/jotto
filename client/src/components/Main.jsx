@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -11,6 +11,8 @@ import { Container } from 'react-bootstrap';
 
 import { getSecretWord } from '../actions/';
 
+import { Spinner } from 'react-bootstrap';
+
 export class UnconnectedMain extends React.Component {
   componentDidMount() {
     this.props.getSecretWord();
@@ -22,11 +24,19 @@ export class UnconnectedMain extends React.Component {
     return (
       <Container>
         <h1>Jotto</h1>
-        <div className="mb-3">The secret word is {secretWord}</div>
-        <Congrats success={success} />
-        <Input />
-        <GuessedWords guessedWords={guessedWords} />
-        <TotalGuesses />
+        {secretWord !== null ? (
+          <Fragment>
+            <div className="mb-3">The secret word is {secretWord}</div>
+            <Congrats success={success} />
+            <Input />
+            <GuessedWords guessedWords={guessedWords} />
+            <TotalGuesses />
+          </Fragment>
+        ) : (
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )}
       </Container>
     );
   }
@@ -34,7 +44,7 @@ export class UnconnectedMain extends React.Component {
 
 UnconnectedMain.propTypes = {
   success: PropTypes.bool.isRequired,
-  secretWord: PropTypes.string.isRequired,
+  secretWord: PropTypes.string,
   guessedWords: PropTypes.arrayOf(
     PropTypes.shape({
       guessedWord: PropTypes.string.isRequired,

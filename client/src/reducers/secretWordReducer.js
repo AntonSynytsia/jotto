@@ -1,6 +1,6 @@
 import { SET_SECRET_WORD } from '../actions/';
 
-const initialState = '';
+const initialState = null;
 
 /**
  * @function secretWordReducer
