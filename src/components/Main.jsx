@@ -16,11 +16,12 @@ export class UnconnectedMain extends React.Component {
   }
 
   render() {
-    const { success, guessedWords } = this.props;
+    const { success, guessedWords, secretWord } = this.props;
 
     return (
       <Container>
         <h1>Jotto</h1>
+        <div>The secret word is {secretWord}</div>
         <Congrats success={success} />
         <Input />
         <GuessedWords guessedWords={guessedWords} />
@@ -31,7 +32,7 @@ export class UnconnectedMain extends React.Component {
 
 UnconnectedMain.propTypes = {
   success: PropTypes.bool.isRequired,
-  // secretWord: PropTypes.string.isRequired,
+  secretWord: PropTypes.string.isRequired,
   guessedWords: PropTypes.arrayOf(
     PropTypes.shape({
       guessedWord: PropTypes.string.isRequired,

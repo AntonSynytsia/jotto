@@ -26,12 +26,13 @@ export class UnconnectedInput extends Component {
     const guessedWord = this.state.currentGuess;
     if (guessedWord.trim().length !== 0) {
       this.props.guessWord(guessedWord);
+      this.setState({ currentGuess: '' });
     }
   }
 
   render() {
     const contents = this.props.success ? null : (
-      <Form className="d-flex">
+      <Form className="d-flex mb-3">
         <Form.Control
           data-test="input-box"
           type="text"
@@ -45,6 +46,7 @@ export class UnconnectedInput extends Component {
           type="submit"
           className="flex-shrink-0 ml-1"
           onClick={this.handleClick}
+          disabled={this.state.currentGuess.trim().length === 0}
         >
           Submit
         </Button>

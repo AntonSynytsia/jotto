@@ -1,3 +1,7 @@
+# Jotto
+
+A five-letter word guessing game built with a test-driven development strategy, following a Udemy course on React, Redux, Jest, and Enzyme.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

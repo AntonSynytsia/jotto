@@ -49,14 +49,15 @@ describe('redux properties', () => {
 test('`getSecretWord` runs on Main mount', () => {
   const getSecretWordMock = jest.fn();
 
+  const props = {
+    getSecretWord: getSecretWordMock,
+    success: false,
+    guessedWords: [],
+    secretWord: ''
+  };
+
   // set up app component with getSecretWordMock as the getSecretWord prop
-  const wrapper = shallow(
-    <UnconnectedMain
-      getSecretWord={getSecretWordMock}
-      success={false}
-      guessedWords={[]}
-    />
-  );
+  const wrapper = shallow(<UnconnectedMain {...props} />);
 
   // run the lifecycle method
   wrapper.instance().componentDidMount();
